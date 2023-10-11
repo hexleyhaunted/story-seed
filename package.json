@@ -19,7 +19,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "commit": "git add . && git commit -m 'quicksave' && git push origin master",
-    "deploy": "npm run build && firebase deploy"
+    "deploy": "npm run commit && npm run build && firebase deploy"
   },
   "eslintConfig": {
     "extends": [
