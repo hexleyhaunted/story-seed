@@ -1,0 +1,48 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #212738;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 32px;
+}
+
+.image-container {
+  display: flex;
+  column-gap: 16px;
+  .image {
+    height: 250px;
+    width: 200px;
+    object-fit: contain;
+  }
+}
+
+.button {
+  background: #F97068;
+  color: #EDF2EF;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  transition: 0.1s ease-out;
+  font-weight: 700;
+  &:hover {
+    color: #212738;
+    background-color: #EDF2EF;
+    cursor: pointer;
+    scale: 1.03;
+  }
+  &:active {
+    color: #212738;
+    background-color: #EDF2EF;
+    cursor: pointer;
+    scale: 0.97;
+  }
+}
