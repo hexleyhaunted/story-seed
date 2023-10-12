@@ -14,8 +14,8 @@
   display: flex;
   column-gap: 16px;
   .image {
-    height: 250px;
-    width: 200px;
+    height: 60vh;
+    max-width: 30vw;
     object-fit: contain;
   }
 }
