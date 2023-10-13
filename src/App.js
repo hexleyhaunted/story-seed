@@ -4,25 +4,32 @@ import {useEffect, useState} from "react";
 
 function App() {
   const [selectedImageKeys, setSelectedImageKeys] = useState([]);
-  let availableImages = Object.keys(imagesJson.images);
+  const [availableImageKeys, setAvailableImageKeys] = useState([]);
 
   useEffect(() => {
+    setAvailableImageKeys(Object.keys(imagesJson.images))
     selectNewImages();
   }, []);
 
+  useEffect(() => {
+    if(availableImageKeys.length === Object.keys(imagesJson.images).length) {
+      selectNewImages();
+    }
+  }, [availableImageKeys]);
+
   function selectNewImages() {
-    if(availableImages.length < 3) {
-      availableImages = Object.keys(imagesJson.images);
+    if(availableImageKeys.length < 3) {
+      setAvailableImageKeys(Object.keys(imagesJson.images));
     }
 
     let selectedKeys = [];
 
-    while (selectedKeys.length < 3) {
-      const newKey = getRandomItem(availableImages);
-      availableImages = availableImages.filter(i => i !== newKey);
-      selectedKeys.push(newKey);
+    while (selectedKeys.length < 3 && availableImageKeys.length >= 3) {
+      const newKey = getRandomItem(availableImageKeys);
+      if(!selectedKeys.includes(newKey)) selectedKeys.push(newKey);
     }
 
+    setAvailableImageKeys((prevState) => prevState.filter((k) => !selectedKeys.includes(k)));
     setSelectedImageKeys(selectedKeys);
   }
 
